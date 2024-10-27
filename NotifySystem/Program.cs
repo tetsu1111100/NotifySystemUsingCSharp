@@ -14,7 +14,8 @@ namespace NotifySystem
     {
         static void Main(string[] args)
         {
-            SendLineMsg();
+            SendLineMsg();  //line
+            //SendMailMsg();    //mail
             Console.ReadLine();
         }
 
@@ -32,6 +33,15 @@ namespace NotifySystem
             //這裡的Line ID (TargetLindId) 非一般使用者交換LINE時所使用的ID，需要額外特透一些方式取得
             LineService lineService = new LineService();
             lineService.SendMessage(config.ChannelAccessToken, config?.TargetLindId, "hi, I'm line message.");
+        }
+
+        /// <summary>
+        /// 發送Mail訊息
+        /// </summary>
+        public static void SendMailMsg()
+        {
+            MailService mailService = new MailService();
+            mailService.SendMessage("from@gmail.com", "target@gmail.com", "my-mail-subject", "I'm mail message.");
         }
     }
 }
